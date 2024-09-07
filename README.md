@@ -2,16 +2,6 @@
 
 https://github.com/user-attachments/assets/2bf2bc05-c35f-4a47-a234-6f39331896d9
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
