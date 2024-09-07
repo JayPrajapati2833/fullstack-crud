@@ -32,13 +32,19 @@ const Users = () => {
   const handletoDelete = (currentId: any) => {
     console.log("Id Is", typeof currentId);
 
+    const ans = userData.find((data: any) => data?.id === currentId);
+    console.log("Deleted", ans?.fname);
     axios
       .delete(`api/user-crud`, { data: { currentId } })
       .then((res) => {
         console.log("Resp from Delete", res);
+
         const filteredData = userData?.filter(
           (data: any) => data?.id !== currentId
         );
+
+        alert(`${ans?.fname}'s all data deleted successfully!!`);
+
         setuserData(filteredData);
       })
       .catch((err) => {
@@ -55,38 +61,39 @@ const Users = () => {
       </button>
       <br />
       <br />
-      
-      <table border={1} style={{ margin: "auto" }}>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Mobile Number</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {userData?.map((data: any) => {
-            return (
-              <tr key={data?.id}>
-                <td>{data?.fname}</td>
-                <td>{data?.lname}</td>
-                <td>{data?.email}</td>
-                <td>{data?.mobileNo}</td>
-                <td>
-                  <button onClick={() => handletoEdit(data?.id)}>Edit</button>
-                  &nbsp;
-                  <button onClick={() => handletoDelete(data?.id)}>
-                    Delete
-                  </button>
-                  &nbsp;
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      {userData && (
+        <table border={1} style={{ margin: "auto" }}>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Mobile Number</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {userData?.map((data: any) => {
+              return (
+                <tr key={data?.id}>
+                  <td>{data?.fname}</td>
+                  <td>{data?.lname}</td>
+                  <td>{data?.email}</td>
+                  <td>{data?.mobileNo}</td>
+                  <td>
+                    <button onClick={() => handletoEdit(data?.id)}>Edit</button>
+                    &nbsp;
+                    <button onClick={() => handletoDelete(data?.id)}>
+                      Delete
+                    </button>
+                    &nbsp;
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}{" "}
     </div>
   );
 };
