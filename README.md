@@ -9,7 +9,7 @@ pnpm dev
 # or
 bun dev
 ```
-Uploading Create Next App - Google Chrome 2024-09-07 15-08-18.mp4…
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
